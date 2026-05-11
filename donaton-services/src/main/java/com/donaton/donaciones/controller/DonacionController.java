@@ -8,7 +8,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/donaciones")
-@CrossOrigin("*")
+@CrossOrigin(origins = "*")
 public class DonacionController {
 
     private final DonacionService service;
@@ -17,13 +17,20 @@ public class DonacionController {
         this.service = service;
     }
 
+    // Para que cada usuario vea SOLO lo suyo
+    @GetMapping("/usuario/{usuarioId}")
+    public List<Donacion> listarPorUsuario(@PathVariable Long usuarioId) {
+        return service.obtenerPorUsuario(usuarioId);
+    }
+
+    // Si quieres una ruta para ver todas (opcional)
     @GetMapping
-    public List<Donacion> listar() {
-        return service.listar();
+    public List<Donacion> listarTodas() {
+        return service.listarTodo();
     }
 
     @PostMapping
-    public Donacion guardar(@RequestBody Donacion donacion) {
+    public Donacion crear(@RequestBody Donacion donacion) {
         return service.guardar(donacion);
     }
 }

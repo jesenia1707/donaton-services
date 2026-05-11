@@ -7,7 +7,7 @@ import lombok.*;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "donaciones")
+@Table(name = "donaton")
 public class Donacion {
 
     @Id
@@ -17,4 +17,6 @@ public class Donacion {
     private String tipo;
     private int cantidad;
     private String ubicacion;
+
+    private Long usuarioId;
 }

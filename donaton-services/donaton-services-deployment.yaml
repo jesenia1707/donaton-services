@@ -20,6 +20,7 @@ spec:
       containers:
       - name: donaton-services
         image: donaton-services:latest
+        imagePullPolicy: Never
 
         ports:
         - containerPort: 8082

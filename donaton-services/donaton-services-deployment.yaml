@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: donaton-services
+
+spec:
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: donaton-services
+
+  template:
+    metadata:
+      labels:
+        app: donaton-services
+
+    spec:
+      containers:
+      - name: donaton-services
+        image: donaton-services:latest
+        imagePullPolicy: Never
+
+        ports:
+        - containerPort: 8082
+
+        env:
+        - name: SPRING_RABBITMQ_HOST
+          value: rabbitmq-service

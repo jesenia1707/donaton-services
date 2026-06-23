@@ -5,10 +5,10 @@ metadata:
   name: grafana-service
 
 spec:
+  type: NodePort
+
   selector:
     app: grafana
-
-  type: NodePort
 
   ports:
     - port: 3000

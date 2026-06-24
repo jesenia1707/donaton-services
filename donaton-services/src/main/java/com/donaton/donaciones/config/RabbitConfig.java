@@ -7,8 +7,10 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class RabbitConfig {
 
+    public static final String COLA_DONACIONES = "donaciones";
+
     @Bean
     public Queue colaDonaciones() {
-        return new Queue("donaciones");
+        return new Queue(COLA_DONACIONES, true);
     }
 }
